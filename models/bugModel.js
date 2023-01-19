@@ -13,4 +13,4 @@ const bugSchema = new mongoose.Schema(
 );
 
 const Bug = mongoose.model('bug', bugSchema);
-export default User;
+export default Bug;
