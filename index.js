@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { mongoConnect } from './config/connect.js';
 import userRouter from './routers/userRouter.js';
 import bugRouter from './routers/bugRouter.js';
+import calculateRoute from './routers/calculateRoute.js';
 
 // config
 const app = express();
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 });
 app.use('/api/user', userRouter);
 app.use('/api/bug', bugRouter);
+app.use('/api/calculate', calculateRoute);
 
 //server
 const PORT = process.env.PORT || 8080;

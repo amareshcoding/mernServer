@@ -9,7 +9,7 @@ const generateToken = (id) => {
 
 const register = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, userName } = req.body;
 
     if (!email || !password) {
       return res.status(400).send('Please fill all the fields!');
@@ -18,6 +18,7 @@ const register = async (req, res) => {
     const user = await User.create({
       email,
       password,
+      userName,
     });
 
     res.status(201).send(user);
@@ -37,7 +38,12 @@ const login = async (req, res) => {
     const isUser = await User.findOne({ email });
     if (isUser && (await isUser.matchPassword(password))) {
       res.status(200).json({
-        user: isUser,
+        user: {
+          _id: isUser._id,
+          userName: isUser.userName,
+          email: isUser.email,
+          updatedAt: isUser.updatedAt,
+        },
         token: generateToken(isUser._id),
       });
     } else {

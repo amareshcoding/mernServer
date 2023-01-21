@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema(
   {
+    userName: { type: String , default:'Guest User'},
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
   },
