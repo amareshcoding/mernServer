@@ -5,6 +5,7 @@ import { mongoConnect } from './config/connect.js';
 import userRouter from './routers/userRouter.js';
 import bugRouter from './routers/bugRouter.js';
 import calculateRoute from './routers/calculateRoute.js';
+import jobRouter from './routers/jobRouter.js';
 
 // config
 const app = express();
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 app.use('/api/user', userRouter);
 app.use('/api/bug', bugRouter);
 app.use('/api/calculate', calculateRoute);
+app.use('/api/job', jobRouter);
 
 //server
 const PORT = process.env.PORT || 8080;
