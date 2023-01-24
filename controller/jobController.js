@@ -27,6 +27,15 @@ const getJobs = async (req, res) => {
     res.status(500).send({ message: err.message });
   }
 };
+const getOneJob = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const job = await Job.findById(id);
+    res.status(200).send(job);
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+};
 // - Company name
 // - Position
 // - Contract
@@ -52,4 +61,4 @@ const deleteJobs = async (req, res) => {
   }
 };
 
-export { addJob, getJobs, editJobs, deleteJobs };
+export { addJob, getJobs, getOneJob, editJobs, deleteJobs };
