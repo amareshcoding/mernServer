@@ -52,10 +52,12 @@ const generateRandomWord = async (req, res) => {
       'Z',
     ];
 
-    const word = '';
+    var word = '';
+
     for (let i = 0; i < len; i++) {
       word += chars[Math.floor(Math.random() * 25)];
     }
+    console.log('word: ', word);
     res.status(200).send(word);
   } catch (err) {
     res.status(500).send({ message: err.message });
