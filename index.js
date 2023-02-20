@@ -11,6 +11,7 @@ import gameRouter from './routers/gameRouter.js';
 // config
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({extended: true}))
 app.use(cors());
 dotenv.config();
 
@@ -42,3 +43,4 @@ app.listen(PORT, async () => {
 //
 // Changes done in test branch
 //Change 2
+//change in master
